@@ -3,97 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tax Calculator</title>
+<title>Tax Management System</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-    .container {
-        background: white;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        width: 350px;
-        text-align: center;
-    }
+body{
+background:#f5f7fa;
+}
 
-    h1 {
-        color: #333;
-    }
+nav{
+background:#007BFF;
+padding:15px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    input, select, button {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
+.logo{
+color:white;
+font-size:24px;
+font-weight:bold;
+}
 
-    button {
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-    }
+nav ul{
+list-style:none;
+display:flex;
+gap:20px;
+}
 
-    button:hover {
-        background-color: #0056b3;
-    }
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
 
-    #result {
-        margin-top: 20px;
-        font-weight: bold;
-        color: green;
-    }
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(to right,#007BFF,#00c6ff);
+color:white;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+.container{
+max-width:700px;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.container h2{
+margin-bottom:20px;
+text-align:center;
+}
+
+input,select,button{
+width:100%;
+padding:15px;
+margin-top:15px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+}
+
+button{
+background:#007BFF;
+color:white;
+border:none;
+cursor:pointer;
+font-size:18px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:green;
+text-align:center;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Tax Calculator</h1>
+<nav>
+<div class="logo">Tax System</div>
 
-    <input type="number" id="income" placeholder="Enter Income">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
 
-    <select id="taxRate">
-        <option value="0.10">10% Tax</option>
-        <option value="0.15">15% Tax</option>
-        <option value="0.18">18% Tax</option>
-        <option value="0.30">30% Tax</option>
-    </select>
-
-    <button onclick="calculateTax()">Calculate Tax</button>
-
-    <div id="result"></div>
+<div class="hero">
+<h1>Tax Calculator</h1>
+<p>Fast and Accurate Tax Calculations</p>
 </div>
 
+<div class="container">
+
+<h2>Calculate Your Tax</h2>
+
+<input type="number" id="income" placeholder="Enter Income">
+
+<select id="taxRate">
+<option value="0.10">10% Tax</option>
+<option value="0.15">15% Tax</option>
+<option value="0.18">18% Tax</option>
+<option value="0.30">30% Tax</option>
+</select>
+
+<button onclick="calculateTax()">Calculate Tax</button>
+
+<div id="result"></div>
+
+</div>
+
+<footer>
+© 2026 Tax Management System
+</footer>
+
 <script>
-function calculateTax() {
-    let income = parseFloat(document.getElementById("income").value);
-    let taxRate = parseFloat(document.getElementById("taxRate").value);
+function calculateTax(){
 
-    if (isNaN(income) || income <= 0) {
-        document.getElementById("result").innerHTML =
-            "Please enter a valid income.";
-        return;
-    }
+let income=parseFloat(document.getElementById("income").value);
+let taxRate=parseFloat(document.getElementById("taxRate").value);
 
-    let tax = income * taxRate;
-    let netIncome = income - tax;
+if(isNaN(income)||income<=0){
+document.getElementById("result").innerHTML=
+"Please enter a valid income.";
+return;
+}
 
-    document.getElementById("result").innerHTML =
-        "Tax Amount: $" + tax.toFixed(2) +
-        "<br>Net Income: $" + netIncome.toFixed(2);
+let tax=income*taxRate;
+let netIncome=income-tax;
+
+document.getElementById("result").innerHTML=
+"Tax Amount: $" + tax.toFixed(2) +
+"<br>Net Income: $" + netIncome.toFixed(2);
 }
 </script>
 
