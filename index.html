@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Calculator</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        width: 350px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: green;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Tax Calculator</h1>
+
+    <input type="number" id="income" placeholder="Enter Income">
+
+    <select id="taxRate">
+        <option value="0.10">10% Tax</option>
+        <option value="0.15">15% Tax</option>
+        <option value="0.18">18% Tax</option>
+        <option value="0.30">30% Tax</option>
+    </select>
+
+    <button onclick="calculateTax()">Calculate Tax</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateTax() {
+    let income = parseFloat(document.getElementById("income").value);
+    let taxRate = parseFloat(document.getElementById("taxRate").value);
+
+    if (isNaN(income) || income <= 0) {
+        document.getElementById("result").innerHTML =
+            "Please enter a valid income.";
+        return;
+    }
+
+    let tax = income * taxRate;
+    let netIncome = income - tax;
+
+    document.getElementById("result").innerHTML =
+        "Tax Amount: $" + tax.toFixed(2) +
+        "<br>Net Income: $" + netIncome.toFixed(2);
+}
+</script>
+
+</body>
+</html>
