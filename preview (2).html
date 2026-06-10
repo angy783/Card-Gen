@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax History</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+nav{
+    background:#007BFF;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:#ffd700;
+}
+
+.container{
+    max-width:1200px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#007BFF;
+    margin-bottom:30px;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#007BFF;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+td{
+    padding:15px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#f9f9f9;
+}
+
+.actions{
+    margin-top:25px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:white;
+    font-size:16px;
+}
+
+.clear-btn{
+    background:#dc3545;
+}
+
+.clear-btn:hover{
+    background:#b02a37;
+}
+
+.print-btn{
+    background:#28a745;
+}
+
+.print-btn:hover{
+    background:#218838;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    margin-top:20px;
+    font-size:18px;
+}
+
+footer{
+    margin-top:40px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+    <div class="logo">Tax System</div>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h1>Tax Calculation History</h1>
+
+    <div class="table-container">
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Income</th>
+                    <th>Tax Rate</th>
+                    <th>Tax Amount</th>
+                    <th>Net Income</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+
+                <tr>
+                    <td>10-Jun-2026</td>
+                    <td>$5,000.00</td>
+                    <td>10%</td>
+                    <td>$500.00</td>
+                    <td>$4,500.00</td>
+                </tr>
+
+                <tr>
+                    <td>10-Jun-2026</td>
+                    <td>$8,000.00</td>
+                    <td>15%</td>
+                    <td>$1,200.00</td>
+                    <td>$6,800.00</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="actions">
+        <button class="print-btn" onclick="window.print()">
+            Print History
+        </button>
+
+        <button class="clear-btn" onclick="clearHistory()">
+            Clear History
+        </button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Tax Management System | History Records
+</footer>
+
+<script>
+function clearHistory() {
+
+    if(confirm("Are you sure you want to clear all records?")) {
+
+        document.getElementById("historyBody").innerHTML =
+        '<tr><td colspan="5">No records available.</td></tr>';
+
+    }
+}
+</script>
+
+</body>
+</html>
